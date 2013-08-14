@@ -21,7 +21,7 @@ public class MeasurementTest {
         assertThat(new Measurement(2, Unit.FOOT), is(new Measurement(24, Unit.INCH)));
         assertThat(new Measurement(1, Unit.YARD), is(new Measurement(36, Unit.INCH)));
         Measurement meas1 = new Measurement(2, Unit.YARD);
-        Measurement meas2 = new Measurement(71, Unit.INCH);
+        Measurement meas2 = new Measurement(72, Unit.INCH);
         assertThat("This one failed because " + meas1.getBaseUnits() + " is not " + meas2.getBaseUnits(), meas1, is(meas2));
     }
 
