@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -23,6 +24,16 @@ public class MeasurementTest {
         Measurement meas1 = new Measurement(2, Unit.YARD);
         Measurement meas2 = new Measurement(72, Unit.INCH);
         assertThat("This one failed because " + meas1.getBaseUnits() + " is not " + meas2.getBaseUnits(), meas1, is(meas2));
+    }
+
+    @Test
+    public void shouldCompareVolumeBasedUnits() {
+        assertThat(new Measurement(1, Unit.TABLESPOON), is(new Measurement(3, Unit.TEASPOON)));
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldNotCompareTwoDifferentUnits() {
+        assertThat(new Measurement(1, Unit.FOOT), not(new Measurement(1, Unit.TEASPOON)));
     }
 
 

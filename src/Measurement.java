@@ -9,7 +9,7 @@ public class Measurement {
 
     public int getBaseUnits()
     {
-        return this.value * this.unit.conversion();
+        return this.value * this.unit.conversionFactor();
     }
 
     @Override
@@ -19,9 +19,16 @@ public class Measurement {
 
         Measurement that = (Measurement) o;
 
+        if (this.getUnitType()!= that.getUnitType()) throw new RuntimeException("Incomparable types");
+
         if (this.getBaseUnits() != that.getBaseUnits()) return false;
 
         return true;
+
+    }
+
+    private UnitType getUnitType() {
+        return unit.getType();
     }
 
     @Override
